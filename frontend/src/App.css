@@ -1,0 +1,14 @@
+*{
+  margin: 0px;
+  padding: 0px;
+  box-sizing: border-box;
+  text-decoration: none;
+}
+
+html{
+  scroll-behavior: smooth;
+}
+
+body {
+  background-image: url("imgs/bookshelfBG.jpg");
+}
