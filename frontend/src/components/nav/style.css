@@ -14,7 +14,7 @@ header {
     color: #fff;
 }
 
-.logo a {
+.logo-title {
     color: #212121;
     font-family: 'Dancing Script', cursive;
     letter-spacing: 1.5px;
@@ -28,12 +28,7 @@ header {
     justify-content: space-between;
 }
 
-.navbar {
-    list-style: none;
-    display: inline-block;
-}
-
-.navbar a{
+.menu-btn{
     color: #fff;
     font-size: 18px;
     font-weight: 500;
@@ -41,7 +36,7 @@ header {
     transition: color 0.5s ease;
 }
 
-.navbar a:hover{
+.menu-btn:hover{
     color: #A020F0;
 }
 
