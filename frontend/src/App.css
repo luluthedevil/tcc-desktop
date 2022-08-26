@@ -12,3 +12,12 @@ html{
 body {
   background-image: url("imgs/bookshelfBG.jpg");
 }
+
+.container{
+  margin-top: 25px;
+  margin-left: 100px;
+  margin-right: 100px;
+  background-color: rgba(0, 0, 0, 0.66);
+  color: #fff;
+  border-radius: 20px;
+}

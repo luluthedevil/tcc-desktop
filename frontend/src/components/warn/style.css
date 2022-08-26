@@ -1,0 +1,25 @@
+.warn {
+    margin-left: 50px;
+    margin-right: 50px;
+    margin-bottom: 50px;
+}
+
+.content {
+    background-color: black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 40px;
+    border-radius: 15px;
+}
+
+.warn-title{
+    color: crimson;
+    font-size: 30px;
+}
+
+.warn-text {
+    color: firebrick;
+    font-size: 18px;
+}

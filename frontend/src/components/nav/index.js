@@ -16,22 +16,22 @@ export default function NavBar() {
             </Link>
         </div>
         <nav className="navbar" ref={navRef}>
-            <Link to="/" className="menu-btn">
+            <Link to="/" className="menu-btn" onClick={showNavBar}>
                 Home
             </Link>
-            <Link to="/library" className="menu-btn">
+            <Link to="/library" className="menu-btn" onClick={showNavBar}>
                 Biblioteca
             </Link>
-            <Link to="/books" className="menu-btn">
+            <Link to="/books" className="menu-btn" onClick={showNavBar}>
                 Livros
             </Link>
-            <Link to="/rewards" className="menu-btn">
+            <Link to="/rewards" className="menu-btn" onClick={showNavBar}>
                 Recompensas
             </Link>
-            <Link to="/politcs" className="menu-btn">
+            <Link to="/politcs" className="menu-btn" onClick={showNavBar}>
                 Políticas
             </Link>
-            <Link to="/terms" className="menu-btn">
+            <Link to="/terms" className="menu-btn" onClick={showNavBar}>
                 Termos
             </Link>
             <div className="nav-btn nav-close-btn">
