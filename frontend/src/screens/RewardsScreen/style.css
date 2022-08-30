@@ -1,0 +1,15 @@
+.container-rewards {
+    margin-left: 50px;
+    margin-right: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.title {
+    font-size: 28px;
+    border-bottom: 1px solid aqua;
+    padding: 5px;
+    margin-bottom: 20px;
+}

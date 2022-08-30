@@ -23,3 +23,9 @@
     color: firebrick;
     font-size: 18px;
 }
+
+@media (max-width: 1000px) {
+    .warn{
+      margin: 20px;
+    }
+  }

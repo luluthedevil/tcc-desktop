@@ -21,3 +21,8 @@ body {
   color: #fff;
   border-radius: 20px;
 }
+@media (max-width: 1000px) {
+  .container{
+    margin: 10px;
+  }
+}
