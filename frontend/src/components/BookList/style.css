@@ -1,0 +1,38 @@
+.container-books {
+    max-width: 75vw;
+}
+
+.container-books .carousel {
+    display: flex;
+    overflow-x: auto;
+    scroll-behavior: smooth;
+}
+
+.container-content ::-webkit-scrollbar {
+    display: none;
+    width: 20px;
+}
+
+.books{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.container-books .carousel .item {
+    margin: 10px;
+    padding: 10px;
+    width: 150px;
+    flex: none;
+}
+
+.container-content {
+    display: flex;
+    flex-direction: row;
+}
+
+.button {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+}

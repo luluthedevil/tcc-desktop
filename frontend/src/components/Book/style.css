@@ -1,0 +1,12 @@
+.individual-book {
+    margin: 10px;
+    display: flex;
+    flex-direction: column;
+    width: 150px;
+}
+
+.book-poster {
+    width: 120px;
+    height: 180px;
+    padding-bottom: 10px;
+}
