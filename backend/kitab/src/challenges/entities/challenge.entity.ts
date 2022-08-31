@@ -1,4 +1,4 @@
-import { Entity, Column, PrimaryGeneratedColumn, ManyToMany } from "typeorm";
+import { Entity, Column, PrimaryGeneratedColumn, ManyToMany, JoinTable } from "typeorm";
 import { Progress } from "../../progress/entities/progress.entity";
 
 @Entity()
@@ -18,6 +18,7 @@ export class Challenge {
   @Column()
   periodOfTime: string;
 
-  @ManyToMany((_type) => Progress, (progress) => progress.idUser)
+  @ManyToMany(() => Progress)
+  @JoinTable()
   progresses: Progress[];
 }

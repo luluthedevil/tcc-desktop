@@ -4,6 +4,7 @@ import {
     PrimaryGeneratedColumn,
     ManyToMany,
     OneToMany,
+    JoinTable,
   } from "typeorm";
   import { Book } from "../../books/entities/book.entity";
   import { Library } from "../../library/entities/library.entity";
@@ -18,11 +19,11 @@ import {
   
     @Column()
     email: string;
-  
-    @ManyToMany((_type) => Book, (book) => book.users)
+
+    @ManyToMany(() => Book)
     books: Book[];
   
-    @OneToMany((_type) => Library, (library) => library.idUser)
+    @OneToMany(() => Library, (library) => library.user)
     libraries: Library[];
   }
   
