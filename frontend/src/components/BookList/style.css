@@ -1,5 +1,6 @@
 .container-books {
     max-width: 75vw;
+    margin-top: 10px;
 }
 
 .container-books .carousel {
@@ -34,5 +35,9 @@
 .button {
     background-color: transparent;
     border: none;
+    cursor: pointer;
+}
+
+.item {
     cursor: pointer;
 }

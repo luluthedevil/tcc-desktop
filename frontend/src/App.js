@@ -8,6 +8,7 @@ import PoliticsScreen from './screens/PoliticsScreen/PoliticsScreen';
 import RewardsScreen from './screens/RewardsScreen/RewardsScreen';
 import TermsScreen from './screens/TermsScreen/TermsScreen';
 import Warn from './components/warn';
+import BookDetailsScreen from './screens/BookDetailsScreen/BookDetailsScreen';
 
 function App() {
   return (
@@ -23,6 +24,7 @@ function App() {
             <Route path="/politcs" element={<PoliticsScreen />} />
             <Route path="/rewards" element={<RewardsScreen />} />
             <Route path="/terms" element={<TermsScreen />} />
+            <Route path="/book-details" element={<BookDetailsScreen />} />
           </Routes>
         </div>
       </div>

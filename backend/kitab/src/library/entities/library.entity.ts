@@ -1,5 +1,5 @@
-import { User } from "src/users/entities/user.entity";
-import { Entity, Column, PrimaryGeneratedColumn, OneToMany, JoinTable, ManyToOne } from "typeorm";
+import { User } from "../../users/entities/user.entity";
+import { Entity, Column, PrimaryGeneratedColumn, ManyToOne, ManyToMany } from "typeorm";
 import { Book } from "../../books/entities/book.entity";
 
 @Entity()
@@ -10,13 +10,9 @@ export class Library {
   @Column()
   name: string;
 
-  @Column()
-  idUser: string;
+  @ManyToOne(() => User, user => user.libraries, {onDelete: 'CASCADE'})
+  user: User[];
 
-  @ManyToOne(() => User, (user) => user.libraries)
-  user: User;
-
-  @OneToMany((_type) => Book, (book) => book.ISBN)
-  @JoinTable()
+  @ManyToMany((_type) => Book, (book) => book.ISBN)
   books: Book[];
 }
