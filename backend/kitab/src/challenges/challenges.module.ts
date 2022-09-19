@@ -2,8 +2,6 @@ import { Module } from '@nestjs/common';
 import { ChallengesService } from './challenges.service';
 import { ChallengesController } from './challenges.controller';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { Challenge } from './entities/challenge.entity';
-import { Progress } from 'src/progress/entities/progress.entity';
 
 @Module({
   controllers: [ChallengesController],
@@ -14,7 +12,7 @@ import { Progress } from 'src/progress/entities/progress.entity';
     username: 'pguser',
     password: 'pgpassword',
     database: 'postgres',
-    entities: [Challenge, Progress],
+    entities: ['dist/src/**/*.entity.js'],
     synchronize: true,
 })],
   providers: [ChallengesService]

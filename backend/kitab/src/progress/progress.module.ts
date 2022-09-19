@@ -2,7 +2,6 @@ import { Module } from '@nestjs/common';
 import { ProgressService } from './progress.service';
 import { ProgressController } from './progress.controller';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { Progress } from './entities/progress.entity';
 
 @Module({
   controllers: [ProgressController],
@@ -13,7 +12,7 @@ import { Progress } from './entities/progress.entity';
     username: 'pguser',
     password: 'pgpassword',
     database: 'postgres',
-    entities: [Progress],
+    entities: ['dist/src/**/*.entity.js'],
     synchronize: true,
 })],
   providers: [ProgressService]

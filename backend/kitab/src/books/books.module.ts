@@ -2,8 +2,6 @@ import { Module } from '@nestjs/common';
 import { BooksService } from './books.service';
 import { BooksController } from './books.controller';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { Book } from './entities/book.entity';
-import { User } from 'src/users/entities/user.entity';
 
 @Module({
   controllers: [BooksController],
@@ -14,7 +12,7 @@ import { User } from 'src/users/entities/user.entity';
     username: 'pguser',
     password: 'pgpassword',
     database: 'postgres',
-    entities: [Book, User],
+    entities: ['dist/src/**/*.entity.js'],
     synchronize: true,
 })],
   providers: [BooksService]

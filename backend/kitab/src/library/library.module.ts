@@ -2,8 +2,6 @@ import { Module } from '@nestjs/common';
 import { LibraryService } from './library.service';
 import { LibraryController } from './library.controller';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { Library } from './entities/library.entity';
-import { Book } from 'src/books/entities/book.entity';
 import { User } from 'src/users/entities/user.entity';
 
 @Module({
@@ -15,7 +13,7 @@ import { User } from 'src/users/entities/user.entity';
     username: 'pguser',
     password: 'pgpassword',
     database: 'postgres',
-    entities: [Library, Book, User],
+    entities: ['dist/src/**/*.entity.js'],
     synchronize: true,
 }), TypeOrmModule.forFeature([User])],
   providers: [LibraryService]

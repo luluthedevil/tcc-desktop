@@ -10,7 +10,7 @@ export const databaseProviders = [
         port: 5432,
         username: "pguser",
         password: "pgpassword",
-        database: "tcc",
+        database: "postgres",
         entities: [__dirname + "/../**/*.entity{.ts,.js}"],
         synchronize: true,
       });

@@ -1,14 +1,6 @@
-import {
-    Entity,
-    Column,
-    PrimaryColumn,
-    PrimaryGeneratedColumn,
-    ManyToMany,
-    JoinTable,
-    ManyToOne,
-  } from "typeorm";
-  import { User } from "../../users/entities/user.entity";
-  import { Library } from "../../library/entities/library.entity";
+import { Column, Entity, JoinTable, ManyToMany, ManyToOne, PrimaryColumn, PrimaryGeneratedColumn } from "typeorm";
+import { User } from "@/users/entities/user.entity";
+import { Library } from "@/library/entities/library.entity";
   
   @Entity()
   export class Book {
@@ -31,7 +23,8 @@ import {
     @JoinTable()
     users: User[];
 
-    @ManyToOne(() => Library, (library) => library.id)
-    library: Library;
+    @ManyToMany(() => Library, (library) => library.id, {onDelete: 'SET NULL'})
+    @JoinTable()
+    library: Library[];
   }
   
