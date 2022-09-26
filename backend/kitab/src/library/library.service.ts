@@ -1,26 +1,40 @@
-import { Injectable } from '@nestjs/common';
-import { CreateLibraryDto } from './dto/create-library.dto';
-import { UpdateLibraryDto } from './dto/update-library.dto';
+import { Inject, Injectable } from '@nestjs/common';
+//import { CreateLibraryDto } from './dto/create-library.dto';
+//import { UpdateLibraryDto } from './dto/update-library.dto';
+import { Repository } from 'typeorm';
+import { Library } from './entities/library.entity';
 
 @Injectable()
 export class LibraryService {
-  create(createLibraryDto: CreateLibraryDto) {
-    return 'This action adds a new library';
+  constructor( @Inject('Library_REPOSITORY')
+  private libraryRepository: Repository<Library> ) {}
+
+  create(name: string): Promise<Library> {
+    const newLibrary= this.libraryRepository.create({name});
+    return this.libraryRepository.save(newLibrary); // insert or update
   }
 
-  findAll() {
-    return `This action returns all library`;
+  async findAll(): Promise<Library[]> {
+    return this.libraryRepository.find();
   }
 
-  findOne(id: number) {
-    return `This action returns a #${id} library`;
+  async findOne(id: number): Promise<Library> {
+    try {
+      const library = await this.libraryRepository.findOneOrFail({where: {id: id}});
+      return library;
+    } catch (err) {
+      throw err;
+    }
   }
 
-  update(id: number, updateLibraryDto: UpdateLibraryDto) {
-    return `This action updates a #${id} library`;
+  async update(id: number, name: string): Promise<Library> {
+    const library = await this.findOne(id);
+    library.name = name
+    return this.libraryRepository.save(library); //update
   }
 
-  remove(id: number) {
-    return `This action removes a #${id} library`;
+  async remove(id: number): Promise<Library> {
+    const library = await this.findOne(id);
+    return this.libraryRepository.save(library);
   }
 }
