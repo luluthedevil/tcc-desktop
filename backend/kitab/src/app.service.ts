@@ -17,8 +17,8 @@ export class AppService {
     @InjectRepository(Book) private booksRepository: Repository<Book>
   ){}
 
-  seed() {
-
+  getHello(): string {
+    return 'Hello World!';
   }
 
   getAllUsersBooks(): Promise<User[]> {
@@ -30,10 +30,5 @@ export class AppService {
   customQUery(): any {
     return this.userRepository.createQueryBuilder("user").select("name").where("favorite")
     //make one for favorite books
-  }
-
-
-  getHello(): string {
-    return 'Hello nest!';
   }
 }
