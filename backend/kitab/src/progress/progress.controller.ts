@@ -1,6 +1,6 @@
 import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/common';
 import { ProgressService } from './progress.service';
-//import { CreateProgressDto } from './dto/create-progress.dto';
+import { CreateProgressDto } from './dto/create-progress.dto';
 //import { UpdateProgressDto } from './dto/update-progress.dto';
 
 @Controller('progress')
@@ -8,8 +8,8 @@ export class ProgressController {
   constructor(private readonly progressService: ProgressService) {}
 
   @Post()
-  create(@Body() name: string) {
-    return this.progressService.create(name);
+  create(@Body() progress: CreateProgressDto) {
+    return this.progressService.create(progress.progress);
   }
 
   @Get()
@@ -23,8 +23,8 @@ export class ProgressController {
   }
 
   @Patch(':id')
-  update(@Param('id') id: string, @Body() name: string) {
-    return this.progressService.update(+id, name);
+  update(@Param('id') id: string, @Body() progress: string) {
+    return this.progressService.update(+id, progress);
   }
 
   @Delete(':id')

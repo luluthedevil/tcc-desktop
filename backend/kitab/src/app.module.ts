@@ -8,6 +8,10 @@ import { Library } from './library/entities/library.entity';
 import { Challenge } from './challenges/entities/challenge.entity';
 import { Book } from './books/entities/book.entity';
 import { UsersModule } from './users/users.module';
+import { ProgressModule } from './progress/progress.module';
+import { LibraryModule } from './library/library.module';
+import { ChallengesModule } from './challenges/challenges.module';
+import { BooksModule } from './books/books.module';
 
 @Module({
   imports: [
@@ -30,6 +34,10 @@ import { UsersModule } from './users/users.module';
       autoLoadEntities: true,
     }),
     UsersModule,
+    ProgressModule,
+    LibraryModule,
+    ChallengesModule,
+    BooksModule
     // TypeOrmModule.forFeature([
     //   User, 
     //   Progress, 

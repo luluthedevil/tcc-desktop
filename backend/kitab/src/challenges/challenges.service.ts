@@ -9,8 +9,8 @@ export class ChallengesService {
   constructor( @Inject('Challenge_REPOSITORY')
   private challengeRepository: Repository<Challenge> ) {}
 
-  create(name: string): Promise<Challenge> {
-    const newChallenge = this.challengeRepository.create({name});
+  create(name: string, description: string): Promise<Challenge> {
+    const newChallenge = this.challengeRepository.create({name, description});
     return this.challengeRepository.save(newChallenge); // insert or update
   }
 

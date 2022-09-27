@@ -2,19 +2,12 @@ import { Module } from '@nestjs/common';
 import { BooksService } from './books.service';
 import { BooksController } from './books.controller';
 import { TypeOrmModule } from '@nestjs/typeorm';
+import { Book } from './entities/book.entity';
 
 @Module({
   controllers: [BooksController],
-  imports: [TypeOrmModule.forRoot({
-    type: 'postgres',
-    host: 'localhost',
-    port: 5432,
-    username: 'pguser',
-    password: 'pgpassword',
-    database: 'postgres',
-    entities: ['dist/src/**/*.entity.js'],
-    synchronize: true,
-})],
+  imports: [
+    TypeOrmModule.forFeature([Book])],
   providers: [BooksService]
 })
 export class BooksModule {}

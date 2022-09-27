@@ -1,26 +1,41 @@
 import { Injectable } from '@nestjs/common';
-import { CreateProgressDto } from './dto/create-progress.dto';
-import { UpdateProgressDto } from './dto/update-progress.dto';
+import { InjectRepository } from '@nestjs/typeorm';
+//import { CreateProgressDto } from './dto/create-progress.dto';
+//import { UpdateProgressDto } from './dto/update-progress.dto';
+import { Repository } from 'typeorm';
+import { Progress } from './entities/progress.entity';
 
 @Injectable()
 export class ProgressService {
-  create(createProgressDto: CreateProgressDto) {
-    return 'This action adds a new progress';
+  constructor( @InjectRepository(Progress)
+    private progressRepository: Repository<Progress>
+    ) {}
+  create(progress: string): Promise<Progress> {
+    const newProgress = this.progressRepository.create({progress});
+    return this.progressRepository.save(newProgress); // insert or update
   }
 
-  findAll() {
-    return `This action returns all progress`;
+  async findAll(): Promise<Progress[]> {
+    return this.progressRepository.find();
   }
 
-  findOne(id: number) {
-    return `This action returns a #${id} progress`;
+  async findOne(id: number): Promise<Progress> {
+    try {
+      const progress = await this.progressRepository.findOneOrFail({where: {id: id}});
+      return progress;
+    } catch (err) {
+      throw err;
+    }
   }
 
-  update(id: number, updateProgressDto: UpdateProgressDto) {
-    return `This action updates a #${id} progress`;
+  async update(id: number, progress: string): Promise<Progress> {
+    const Progress = await this.findOne(id);
+    Progress.progress = progress;
+    return this.progressRepository.save(Progress); //update
   }
 
-  remove(id: number) {
-    return `This action removes a #${id} progress`;
+  async remove(id: number): Promise<Progress> {
+    const progress = await this.findOne(id);
+    return this.progressRepository.remove(progress);
   }
 }

@@ -1,1 +1,3 @@
-export class CreateProgressDto {}
+export class CreateProgressDto {
+    progress: string;
+}

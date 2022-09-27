@@ -9,8 +9,8 @@ export class BooksService {
   constructor( @Inject('Book_REPOSITORY')
   private bookRepository: Repository<Book> ) {}
 
-  create(bookName: string): Promise<Book> {
-    const newBook = this.bookRepository.create({bookName});
+  create(bookName: string, genre: string): Promise<Book> {
+    const newBook = this.bookRepository.create({bookName, genre});
     return this.bookRepository.save(newBook); // insert or update
   }
 

@@ -1,6 +1,6 @@
 import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/common';
 import { ChallengesService } from './challenges.service';
-//import { CreateChallengeDto } from './dto/create-challenge.dto';
+import { CreateChallengeDto } from './dto/create-challenge.dto';
 //import { UpdateChallengeDto } from './dto/update-challenge.dto';
 
 @Controller('challenges')
@@ -8,8 +8,8 @@ export class ChallengesController {
   constructor(private readonly challengesService: ChallengesService) {}
 
   @Post()
-  create(@Body() name: string) {
-    return this.challengesService.create(name);
+  create(@Body() challenge: CreateChallengeDto) {
+    return this.challengesService.create(challenge.name, challenge.description);
   }
 
   @Get()

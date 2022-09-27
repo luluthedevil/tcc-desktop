@@ -1,1 +1,3 @@
-export class CreateLibraryDto {}
+export class CreateLibraryDto {
+    name: string;
+}
