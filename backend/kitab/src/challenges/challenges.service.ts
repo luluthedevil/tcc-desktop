@@ -1,4 +1,5 @@
-import { Inject, Injectable } from '@nestjs/common';
+import { Injectable } from '@nestjs/common';
+import { InjectRepository } from '@nestjs/typeorm';
 //import { CreateChallengeDto } from './dto/create-challenge.dto';
 //import { UpdateChallengeDto } from './dto/update-challenge.dto';
 import { Repository } from 'typeorm';
@@ -6,7 +7,7 @@ import { Challenge } from './entities/challenge.entity';
 
 @Injectable()
 export class ChallengesService {
-  constructor( @Inject('Challenge_REPOSITORY')
+  constructor( @InjectRepository(Challenge)
   private challengeRepository: Repository<Challenge> ) {}
 
   create(name: string, description: string): Promise<Challenge> {

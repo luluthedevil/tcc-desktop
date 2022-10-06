@@ -1,4 +1,4 @@
-import { Column, Entity, JoinTable, ManyToMany, ManyToOne, PrimaryColumn, PrimaryGeneratedColumn } from "typeorm";
+import { Column, Entity, JoinTable, ManyToMany, PrimaryGeneratedColumn } from "typeorm";
 import { User } from "@/users/entities/user.entity";
 import { Library } from "@/library/entities/library.entity";
   
@@ -7,17 +7,29 @@ import { Library } from "@/library/entities/library.entity";
     @PrimaryGeneratedColumn()
     id: number;
   
-    @PrimaryColumn()
-    ISBN: string;
+    @Column({nullable: true})
+    ISBN_10: string;
+
+    @Column({nullable: true})
+    ISBN_13: string;
   
     @Column()
     bookName: string;
+
+    @Column({nullable: true})
+    authorName: string;
   
     @Column()
     pageNumber: number;
   
-    @Column()
+    @Column({nullable: true})
     genre: string;
+
+    @Column({nullable: true})
+    publiYear: string;
+
+    @Column({nullable: true})
+    description: string;
   
     @ManyToMany(() => User)
     @JoinTable()
@@ -27,4 +39,5 @@ import { Library } from "@/library/entities/library.entity";
     @JoinTable()
     library: Library[];
   }
-  
+
+  // insert into book ("ISBN_10", "ISBN_13", "bookName","authorName", "pageNumber", "genre", "publiYear", "description")  select isbn_10, isbn_13, titulo, autor, paginas, genero, ano, descricao from books_portuguese where isbn_10 is not null

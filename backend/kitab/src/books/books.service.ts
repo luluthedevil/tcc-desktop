@@ -1,4 +1,5 @@
-import { Inject, Injectable } from '@nestjs/common';
+import { Injectable } from '@nestjs/common';
+import { InjectRepository } from '@nestjs/typeorm';
 //import { CreateBookDto } from './dto/create-book.dto';
 //import { UpdateBookDto } from './dto/update-book.dto';
 import { Repository } from 'typeorm';
@@ -6,7 +7,7 @@ import { Book } from './entities/book.entity';
 
 @Injectable()
 export class BooksService {
-  constructor( @Inject('Book_REPOSITORY')
+  constructor( @InjectRepository(Book)
   private bookRepository: Repository<Book> ) {}
 
   create(bookName: string, genre: string): Promise<Book> {

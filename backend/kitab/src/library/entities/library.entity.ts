@@ -13,6 +13,6 @@ export class Library {
   @ManyToOne(() => User, user => user.libraries, {onDelete: 'CASCADE'})
   user: User[];
 
-  @ManyToMany((_type) => Book, (book) => book.ISBN)
+  @ManyToMany((_type) => Book, (book) => book.id)
   books: Book[];
 }

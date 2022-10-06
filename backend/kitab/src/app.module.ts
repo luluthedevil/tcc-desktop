@@ -38,13 +38,6 @@ import { BooksModule } from './books/books.module';
     LibraryModule,
     ChallengesModule,
     BooksModule
-    // TypeOrmModule.forFeature([
-    //   User, 
-    //   Progress, 
-    //   Library, 
-    //   Challenge, 
-    //   Book
-    // ])
   ],
   controllers: [AppController],
   providers: [AppService],
