@@ -40,4 +40,4 @@ import { Library } from "@/library/entities/library.entity";
     library: Library[];
   }
 
-  // insert into book ("ISBN_10", "ISBN_13", "bookName","authorName", "pageNumber", "genre", "publiYear", "description")  select isbn_10, isbn_13, titulo, autor, paginas, genero, ano, descricao from books_portuguese where isbn_10 is not null
+  // insert into book ("ISBN_10", "ISBN_13", "bookName","authorName", "pageNumber", "genre", "publiYear", "description")  select isbn_10, isbn_13, titulo, autor, paginas, genero, ano, descricao from books_portuguese
