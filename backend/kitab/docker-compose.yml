@@ -1,17 +1,23 @@
 version: '3'
 
 services:
-  pgsql:
-    image: postgres:alpine
+  db:
+    image: 'postgres:latest'
     ports:
       - '5432:5432'
-    container_name: 'pgsql'
-    restart: always
-    volumes:
-      - pg-data:/var/lib/postgresql/data
+    container_name: db
+    restart: always  
     environment:
       POSTGRES_USER: pguser
       POSTGRES_PASSWORD: pgpassword
+      POSTGRES_DB: postgres
+    volumes:
+      #- pg-data:/var/lib/postgresql/data
+      - db:/var/lib/postgresql/data
+      # copy the sql script to create tables
+      - ./sql/create_tables.sql:/docker-entrypoint-initdb.d/create_tables.sql
+      # copy the sql script to fill tables
+      - ./sql/fill_tables.sql:/docker-entrypoint-initdb.d/fill_tables.sql
 
   adminer:
     image: adminer
@@ -21,3 +27,5 @@ services:
 
 volumes:
   pg-data:
+  db:
+    driver: local
