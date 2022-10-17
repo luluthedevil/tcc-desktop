@@ -15,8 +15,12 @@ export class BooksService {
     return this.bookRepository.save(newBook); // insert or update
   }
 
-  async findAll(): Promise<Book[]> {
-    return this.bookRepository.find();
+  async findAll(limit: number, offset: number): Promise<Book[]> {
+    console.log(limit, offset)
+    return this.bookRepository.find({
+      take: limit,
+      skip: offset
+    });
   }
 
   async findOne(id: number): Promise<Book> {
