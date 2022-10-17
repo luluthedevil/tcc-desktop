@@ -3,10 +3,19 @@
     display: flex;
     flex-direction: column;
     width: 150px;
+    cursor: pointer;
 }
 
 .book-poster {
     width: 120px;
     height: 180px;
     padding-bottom: 10px;
+}
+
+.book-title {
+    font-size: 18px;
+}
+
+.book-author{
+    font-style: italic;
 }

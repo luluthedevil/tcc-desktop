@@ -9,6 +9,7 @@ import RewardsScreen from './screens/RewardsScreen/RewardsScreen';
 import TermsScreen from './screens/TermsScreen/TermsScreen';
 import Warn from './components/warn';
 import BookDetailsScreen from './screens/BookDetailsScreen/BookDetailsScreen';
+require('dotenv').config();
 
 function App() {
   return (

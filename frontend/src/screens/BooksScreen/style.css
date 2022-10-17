@@ -1,0 +1,50 @@
+.container-books {
+    margin-left: 50px;
+    padding-bottom: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.book-input {
+    background-color: #eee;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: row;
+}
+
+.book-input input {
+    width: 250px;
+    height: 30px;
+    font-size: 17px;
+}
+
+.book-input input, .book-input button {
+    background: none;
+    border: none;
+    padding: 5px;
+    
+}
+
+.book-input button {
+    text-align: end;
+    padding-right: 10px;
+    cursor: pointer;
+}
+
+.books-display {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+@media (max-width: 1000px) {
+    .container-books {
+        margin-left: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+}
