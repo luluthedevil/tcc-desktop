@@ -1,0 +1,83 @@
+.overlay {
+    min-height: 100vh;
+    width: 100%;
+    position: fixed;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    background: linear-gradient(to bottom right, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 1));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor:auto;
+}
+
+.overlay-inner {
+    background: linear-gradient(to bottom right, rgba(187, 255, 255, 0.8), rgba(187, 255, 255, 1));
+    width: 700px;
+    height: 550px;
+    padding: 1.5rem;
+    position: fixed;
+    box-sizing: border-box;
+    font-size: 1.3rem;
+}
+
+.overlay-inner .close-btn {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    outline: none;
+    border: none;
+    font-size: 20px;
+    background-color: transparent;
+    cursor: pointer;
+}
+
+.overlay-inner .inner-box {
+    margin-top: 30px;
+    display: flex;
+    justify-content: center;
+}
+
+.overlay-inner .inner-box img {
+    margin-right: 20px;
+    width: 150px;
+    height: 210px;
+    margin-bottom: 20px;
+}
+
+.inner-box h1 {
+    color: #121212;
+}
+
+.overlay-inner .inner-box .book-author-name {
+    margin-top: 10px;
+    color: #121212;
+}
+
+.inner-box h4 {
+    color: #121212;
+}
+
+.overlay-inner .inner-box button {
+    outline: none;
+    border: none;
+    width: 100px;
+    border-radius: 5px;
+    background-color: #E066FF;
+    color: wheat;
+    font-weight: bold;
+    padding: 0.3rem 0.5rem;
+    margin-top: 10px;
+    cursor: pointer;
+}
+
+.overlay-inner .book-description {
+    padding-right: 5px;
+    text-align: justify;
+    font-size: 18px;
+    color: #121212;
+    overflow-y: scroll;
+    height: 250px;
+}

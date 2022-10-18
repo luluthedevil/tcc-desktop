@@ -22,14 +22,14 @@ export default function LibraryScreen() {
           <img alt="book cover" src={`https://covers.openlibrary.org/b/isbn/${item.ISBN_10}-M.jpg`} />
         </div>
       ))}
-      <Booklist 
+      {/* <Booklist 
         title="Livros favoritos"
         type="favorite"
       />
       <Booklist 
         title="Todos os livros lidos"
         type="read"
-      />
+      /> */}
     </div>
   );
 }
