@@ -10,6 +10,23 @@ export class UsersService {
   constructor( @InjectRepository(User)
   private userRepository: Repository<User> ) {}
 
+  private readonly users: User[] = [
+    {
+      id: 1,
+      name: 'Julia',
+      username: 'juju',
+      email: 'julia@gmail.com',
+      password: '654123'
+    },
+    {
+      id: 2,
+      name: 'Victor',
+      username: 'vkt',
+      email: 'vkt@gmail.com',
+      password: '654123'
+    },
+  ];
+
   create(username: string, email: string): Promise<User> {
     const newUser = this.userRepository.create({username, email});
     return this.userRepository.save(newUser); // insert or update
@@ -19,13 +36,17 @@ export class UsersService {
     return this.userRepository.find();
   }
 
-  async findOne(id: number): Promise<User> {
+  async findOne(id: number): Promise<User | undefined> {
     try {
       const user = await this.userRepository.findOneOrFail({where: {id: id}});
       return user;
     } catch (err) {
       throw err;
     }
+  }
+
+  async findOneUser(username: string): Promise<User | undefined> {
+      return this.users.find(user => user.username === username);
   }
 
   async update(id: number, username: string): Promise<User> {

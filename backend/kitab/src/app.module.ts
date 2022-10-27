@@ -12,6 +12,7 @@ import { ProgressModule } from './progress/progress.module';
 import { LibraryModule } from './library/library.module';
 import { ChallengesModule } from './challenges/challenges.module';
 import { BooksModule } from './books/books.module';
+import { AuthModule } from './auth/auth.module';
 
 @Module({
   imports: [
@@ -37,7 +38,8 @@ import { BooksModule } from './books/books.module';
     ProgressModule,
     LibraryModule,
     ChallengesModule,
-    BooksModule
+    BooksModule,
+    AuthModule
   ],
   controllers: [AppController],
   providers: [AppService],

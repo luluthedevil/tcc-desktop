@@ -12,17 +12,23 @@ import {
   export class User {
     @PrimaryGeneratedColumn()
     id: number;
+
+    @Column({nullable: true})
+    name: string;
   
     @Column()
     username: string;
+
+    @Column()
+    password: string;
   
     @Column()
     email: string;
 
-    @ManyToMany(() => Book)
-    books: Book[];
+    // @ManyToMany(() => Book)
+    // books: Book[];
   
-    @OneToMany(() => Library, library => library.user)
-    libraries: Library[];
+    // @OneToMany(() => Library, library => library.user)
+    // libraries: Library[];
   }
   

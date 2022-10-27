@@ -10,8 +10,8 @@ export class Library {
   @Column()
   name: string;
 
-  @ManyToOne(() => User, user => user.libraries, {onDelete: 'CASCADE'})
-  user: User[];
+  // @ManyToOne(() => User, user => user.libraries, {onDelete: 'CASCADE'})
+  // user: User[];
 
   @ManyToMany((_type) => Book, (book) => book.id)
   books: Book[];
