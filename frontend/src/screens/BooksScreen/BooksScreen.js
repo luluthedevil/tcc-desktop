@@ -14,7 +14,7 @@ export default function BooksScreen() {
       axios.get(`https://www.googleapis.com/books/v1/volumes?q=${search}&key=${process.env.REACT_APP_API_KEY}&maxResults=20`)
       .then(res=>{
         setBookData(res.data.items)
-        console.log(res.data.items)
+        //console.log(res.data.items)
       })
       .catch(err=>console.log(err))
     }

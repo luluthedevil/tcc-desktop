@@ -9,6 +9,7 @@
     "assert": "^2.0.0",
     "axios": "^1.1.2",
     "crypto-browserify": "^3.12.0",
+    "google-spreadsheet": "^3.3.0",
     "https-browserify": "^1.0.0",
     "os-browserify": "^0.3.0",
     "path": "npm:path-browserify@^1.0.1",

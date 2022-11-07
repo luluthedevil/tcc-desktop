@@ -1,7 +1,4 @@
 import React from 'react';
-import BookDetails from '../../components/Book/Details';
-import Booklist from '../../components/BookList';
-import Books from '../../data/Books';
 import './style.css';
 
 export default function HomeScreen() {

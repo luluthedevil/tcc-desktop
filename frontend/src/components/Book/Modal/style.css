@@ -15,18 +15,41 @@
 
 .overlay-inner {
     background: linear-gradient(to bottom right, rgba(187, 255, 255, 0.8), rgba(187, 255, 255, 1));
-    width: 700px;
-    height: 550px;
-    padding: 1.5rem;
+    width: 65vw;
+    height: 80vh;
     position: fixed;
     box-sizing: border-box;
     font-size: 1.3rem;
 }
 
+.overlay-inner .modal-buttons {
+    z-index: 999;
+    display: block;
+    position: fixed;
+    display: flex;
+    justify-content: space-between;
+    background: #00BFFF;
+    width: 65vw;
+    padding: 1.5rem;
+    height: 60px;
+}
+
 .overlay-inner .close-btn {
-    position: absolute;
+    position: unset;
     top: 1rem;
     right: 1rem;
+    outline: none;
+    border: none;
+    font-size: 20px;
+    background-color: transparent;
+    cursor: pointer;
+    justify-content: flex-end;
+}
+
+.overlay-inner .save-btn {
+    position: unset;
+    top: 1rem;
+    left: 1rem;
     outline: none;
     border: none;
     font-size: 20px;
@@ -35,9 +58,11 @@
 }
 
 .overlay-inner .inner-box {
-    margin-top: 30px;
+    margin-top: 50px;
     display: flex;
     justify-content: center;
+    padding: 1.5rem;
+    padding-bottom: 0;
 }
 
 .overlay-inner .inner-box img {
@@ -66,7 +91,7 @@
     width: 100px;
     border-radius: 5px;
     background-color: #E066FF;
-    color: wheat;
+    color: snow;
     font-weight: bold;
     padding: 0.3rem 0.5rem;
     margin-top: 10px;
@@ -74,10 +99,40 @@
 }
 
 .overlay-inner .book-description {
-    padding-right: 5px;
+    padding-right: 8px;
+    padding-left: 1.5rem;
     text-align: justify;
     font-size: 18px;
     color: #121212;
     overflow-y: scroll;
-    height: 250px;
+    height: 33vh;
+}
+
+@media (max-width: 600px) {
+    .overlay-inner {
+        overflow-y: scroll;
+    }
+    .overlay-inner .inner-box {
+        flex-direction: column;
+    }
+    .overlay-inner .modal-buttons {
+        padding: 0;
+        padding-left: 10px;
+        padding-top: 15px;
+        padding-right: 10px;
+        height: 50px;
+    }
+    .overlay-inner .inner-box .book-title {
+        font-size: 20px;
+    }
+    .overlay-inner .inner-box .book-author-name {
+        font-size: 16px;
+    }
+    .overlay-inner .book-description {
+        overflow-y: none;
+        height: 100%;
+        padding-right: 1.5rem;
+        padding-top: 10px;
+        font-size: 15px;
+    }
 }
