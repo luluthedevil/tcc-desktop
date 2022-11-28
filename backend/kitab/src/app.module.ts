@@ -13,9 +13,12 @@ import { LibraryModule } from './library/library.module';
 import { ChallengesModule } from './challenges/challenges.module';
 import { BooksModule } from './books/books.module';
 import { AuthModule } from './auth/auth.module';
+import { MongooseModule } from '@nestjs/mongoose';
+import { BookAPISchema } from './books/entities/book.models';
 
 @Module({
   imports: [
+    MongooseModule.forRoot(`${process.env.MONGO_ACCESS}`),
     TypeOrmModule.forRoot({
       type: "postgres",
       host: "localhost",
