@@ -1,36 +1,46 @@
-import React, {useState, useEffect} from 'react';
+import React, { useEffect, useState } from 'react';
 import './style.css';
 import Booklist from '../../components/BookList';
-import axios from 'axios';
+import Modal from '../../components/Book/Modal';
+import semCapa from '../../imgs/capa_para_sem_capa.png';
 import dotenv from 'dotenv';
+import axios from 'axios';
 dotenv.config();
 
 export default function LibraryScreen() {
+  const [data, setData] = useState([]);
+  const [showModal, setShowModal] = useState(false);
+  const [bookModal, setBookModal] = useState({});
+  const [bookImg, setBookImg] = useState("");
+  const baseURL = 'http://localhost:3333/';
 
-  const [bookList, setBookList] = useState([]);
   useEffect(() => {
-    axios.get(`https://sheet.best/api/sheets/${process.env.REACT_APP_GOOGLE_SHEET_LINK}`).then(
-      response => {
-        setBookList(response.data)
-      }
-    )
-  }, [])
+    axios.get(`${baseURL}books`)
+    .then(response => {
+      setData(response.data);
+    })
+    .catch((err) => console.log(err));
+  }, []);
+  const displayModal = (bookInfo) => {
+    setBookModal(bookInfo);
+    setBookImg((bookInfo.imageLinks && bookInfo.imageLinks.smallThumbnail) ? bookInfo.imageLinks.smallThumbnail : semCapa);
+    setShowModal(!showModal);
+  }
+  //add modal
   return (
     <div className="container-library">
       <h2 className="title">Biblioteca</h2>
       <Booklist 
-        title="Livros"
-        livros={bookList}
-        isLibrary={true}
+        title={"Livros salvos"}
+        livros={data}
+        // showModal={displayModal}
       />
-      {/* <Booklist 
-        title="Livros favoritos"
-        type="favorite"
+      <Modal 
+        showModal={showModal} 
+        info={bookModal} 
+        onClose={() => setShowModal(!showModal)}
+        thumbnail={bookImg}
       />
-      <Booklist 
-        title="Todos os livros lidos"
-        type="read"
-      /> */}
     </div>
   );
 }
