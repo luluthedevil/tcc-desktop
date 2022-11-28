@@ -4,15 +4,44 @@ import { InjectRepository } from '@nestjs/typeorm';
 //import { UpdateBookDto } from './dto/update-book.dto';
 import { Repository } from 'typeorm';
 import { Book } from './entities/book.entity';
+import { BookAPI, BookAPIDocument } from './entities/book.models';
+import { Model } from 'mongoose';
+import { InjectModel } from '@nestjs/mongoose';
 
 @Injectable()
 export class BooksService {
   constructor( @InjectRepository(Book)
-  private bookRepository: Repository<Book> ) {}
+  private bookRepository: Repository<Book>, 
+  @InjectModel('book_api') private readonly bookModel: Model<BookAPIDocument> ) {}
 
-  create(bookName: string, genre: string): Promise<Book> {
-    const newBook = this.bookRepository.create({bookName, genre});
-    return this.bookRepository.save(newBook); // insert or update
+
+  //post book in mongo
+  async saveInMongo(bookObj: BookAPI): Promise<BookAPI> {
+    const newBook = await new this.bookModel(bookObj).save();
+    return newBook; // insert or update
+  }
+
+  //get book in mongo
+  async getInMongo() {
+    return this.bookModel.find({})
+    .then((book)=> {return book})
+    .catch((err) => console.log(err))
+  }
+
+  //get one book in mongo
+  async getOneInMongo(id: string): Promise<BookAPI> {
+    const book = await this.bookModel.findById({_id: id});
+    return book;
+  }
+
+  //delete one book in mongo
+  async deleteOneInMongo(id: string): Promise<BookAPI> {
+    const book = await this.getOneInMongo(id);
+    return await this.bookModel.remove(book);
+  }
+
+  async getSize() {
+    return this.bookModel.count();
   }
 
   async findAll(limit: number, offset: number): Promise<Book[]> {
