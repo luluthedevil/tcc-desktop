@@ -2,22 +2,32 @@ import React, {useState} from 'react';
 import './style.css';
 import Book from '../../components/Book';
 import { BsSearch } from 'react-icons/bs';
+import semCapa from '../../imgs/capa_para_sem_capa.png';
 import axios from 'axios';
 import dotenv from 'dotenv';
+import Modal from '../../components/Book/Modal';
 dotenv.config();
 
 export default function BooksScreen() {
   const [search, setSearch] = useState("");
   const [bookData, setBookData] = useState([]);
+  const [showModal, setShowModal] = useState(false);
   const searchBook = (evt) => {
     if(evt.key === 'Enter'){
-      axios.get(`https://www.googleapis.com/books/v1/volumes?q=${search}&key=${process.env.REACT_APP_API_KEY}&maxResults=20`)
+      axios.get(`http://localhost:3333/books/find?nome=${search}`)
       .then(res=>{
         setBookData(res.data.items)
         //console.log(res.data.items)
       })
       .catch(err=>console.log(err))
     }
+  }
+  const [bookModal, setBookModal] = useState({});
+  const [bookImg, setBookImg] = useState("");
+  const displayModal = (bookInfo) => {
+    setBookModal(bookInfo);
+    setBookImg((bookInfo.imageLinks && bookInfo.imageLinks.smallThumbnail) ? bookInfo.imageLinks.smallThumbnail : semCapa);
+    setShowModal(!showModal);
   }
   return (
     <div className="container-books">
@@ -35,10 +45,19 @@ export default function BooksScreen() {
       <div className="books-display">
         {
           bookData.map((item)=> (
-            <Book key={item.id} info={item} />
+            <Book key={item.id} info={item.volumeInfo}
+            showModal={displayModal}
+            thumbnail={(item.volumeInfo.imageLinks && item.volumeInfo.imageLinks.smallThumbnail) ? item.volumeInfo.imageLinks.smallThumbnail : semCapa}
+            />
           ))
         }
       </div>
+      <Modal 
+        showModal={showModal} 
+        info={bookModal} 
+        onClose={() => setShowModal(!showModal)}
+        thumbnail={bookImg}
+      />
     </div>
   );
 }
