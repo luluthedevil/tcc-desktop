@@ -1,35 +1,19 @@
-import React, {useState} from 'react';
-import Modal from './Modal';
+import React from 'react';
+import semCapa from '../../imgs/capa_para_sem_capa.png';
 import './style.css';
 
-export default function Book({info, sheet = false}) {
-  const [showModal, setShowModal] = useState(false);
-  let infoJSON = true;
-  if(sheet){
-    infoJSON = JSON.parse(info.volumeInfo);
-  }
+export default function Book({info, showModal, thumbnail}) {
+  const imageRef = thumbnail ? thumbnail : semCapa; // get random img
   return (
-    <div className="individual-book" onClick={() => setShowModal(!showModal)}>
+    <div className="individual-book" onClick={() => showModal(info)}>
       <img 
         alt="Capa do livro" 
         className="book-poster"
-        src={
-         ( info.volumeInfo.imageLinks 
-          && 
-          info.volumeInfo.imageLinks.smallThumbnail)
-          || 
-          (infoJSON.imageLinks 
-          && 
-          infoJSON.imageLinks.smallThumbnail)
-        } 
+        src={imageRef} 
       />
-      <span className="book-title">{info.volumeInfo.title || infoJSON.title}</span>
-      <p className="book-author">{info.volumeInfo.authors || infoJSON.authors + ''}</p>
-      <Modal 
-        showModal={showModal} 
-        info={info} 
-        onClose={() => setShowModal(!showModal)}
-      />
+      <span className="book-title">{info.title}</span>
+      <p className="book-author">{info.authors}</p>
+      
     </div>
   );
 }
