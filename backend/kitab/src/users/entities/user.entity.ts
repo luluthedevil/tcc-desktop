@@ -25,8 +25,8 @@ import {
     @Column()
     email: string;
 
-    // @ManyToMany(() => Book)
-    // books: Book[];
+    @ManyToMany(() => Book)
+    books: Book[];
   
     // @OneToMany(() => Library, library => library.user)
     // libraries: Library[];

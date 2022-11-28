@@ -2,6 +2,7 @@ import { Controller, Get, Post, Body, Patch, Param, Delete, UseGuards, Request }
 import { UsersService } from './users.service';
 import { CreateUserDto } from './dto/create-user.dto';
 import { LocalAuthGuard } from '@/auth/local-auth.guard';
+import { JwtAuthGuard } from '@/auth/jwt-auth.guard';
 //import { UpdateUserDto } from './dto/update-user.dto';
 
 @Controller('users')
@@ -10,7 +11,7 @@ export class UsersController {
 
   @Post()
   create(@Body() user: CreateUserDto) {
-    return this.usersService.create(user.username, user.email);
+    return this.usersService.create(user.username, user.email, user.password);
   }
 
   @Get()
@@ -18,11 +19,17 @@ export class UsersController {
     return this.usersService.findAll();
   }
 
-  // @UseGuards(LocalAuthGuard)
-  // @Post('login')
-  // login(@Request() req): any {
-  //   return req.user;
-  // }
+  @UseGuards(JwtAuthGuard)
+  @Get('books')
+  findUserBooks(@Request() req) {
+    return this.usersService.findUserBooks(req.user.id);
+  }
+
+  @UseGuards(JwtAuthGuard)
+  @Post('books/:bookId')
+  addUserBook(@Request() req, @Param('bookId') bookId: number) {
+    return this.usersService.addUserBook(req.user.id, bookId);
+  }
 
   @Get(':id')
   findOne(@Param('id') id: string) {
