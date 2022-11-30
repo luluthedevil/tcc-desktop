@@ -3,11 +3,12 @@ import Book from '../Book';
 import './style.css';
 import { IoIosArrowDropleft, IoIosArrowDropright } from 'react-icons/io';
 
-export default function Booklist({title, livros}) { 
+export default function Booklist({title, livros, showModal, thumbnail}) { 
   const handleBook = (book, index) => (
     <div className="item" key={index}>
       <Book key={book.title} info={book}
       thumbnail={book.image}
+      showModal={showModal}
       />
     </div>
   );

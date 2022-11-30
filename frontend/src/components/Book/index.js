@@ -5,7 +5,7 @@ import './style.css';
 export default function Book({info, showModal, thumbnail}) {
   const imageRef = thumbnail ? thumbnail : semCapa; // get random img
   return (
-    <div className="individual-book" onClick={() => showModal(info)}>
+    <div className="individual-book" onClick={() => showModal(info, thumbnail)}>
       <img 
         alt="Capa do livro" 
         className="book-poster"

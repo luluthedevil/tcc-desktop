@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react';
 import './style.css';
 import Booklist from '../../components/BookList';
 import Modal from '../../components/Book/Modal';
-import semCapa from '../../imgs/capa_para_sem_capa.png';
 import dotenv from 'dotenv';
 import axios from 'axios';
 dotenv.config();
@@ -21,9 +20,9 @@ export default function LibraryScreen() {
     })
     .catch((err) => console.log(err));
   }, []);
-  const displayModal = (bookInfo) => {
+  const displayModal = (bookInfo, thumbnail) => {
     setBookModal(bookInfo);
-    setBookImg((bookInfo.imageLinks && bookInfo.imageLinks.smallThumbnail) ? bookInfo.imageLinks.smallThumbnail : semCapa);
+    setBookImg(thumbnail);
     setShowModal(!showModal);
   }
   //add modal
@@ -33,7 +32,8 @@ export default function LibraryScreen() {
       <Booklist 
         title={"Livros salvos"}
         livros={data}
-        // showModal={displayModal}
+        showModal={displayModal}
+        thumbnail={bookImg}
       />
       <Modal 
         showModal={showModal} 
