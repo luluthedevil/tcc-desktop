@@ -10,13 +10,18 @@ export class ChallengesService {
   constructor( @InjectRepository(Challenge)
   private challengeRepository: Repository<Challenge> ) {}
 
-  create(name: string, description: string): Promise<Challenge> {
-    const newChallenge = this.challengeRepository.create({name, description});
+  create(name: string, description: string, quantity: number): Promise<Challenge> {
+    const newChallenge = this.challengeRepository.create({name, description, quantity});
+    console.log(newChallenge);
     return this.challengeRepository.save(newChallenge); // insert or update
   }
 
   async findAll(): Promise<Challenge[]> {
-    return this.challengeRepository.find();
+    return this.challengeRepository.find({
+      order: {
+        quantity: "asc"
+      }
+    });
   }
 
   async findOne(id: number): Promise<Challenge> {

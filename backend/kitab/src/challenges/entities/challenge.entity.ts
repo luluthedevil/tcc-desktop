@@ -13,12 +13,12 @@ export class Challenge {
   description: string;
 
   @Column()
-  quantity: string;
+  quantity: number;
 
-  @Column()
-  periodOfTime: string;
+  // @Column()
+  // periodOfTime: string; // move to progress
 
-  @ManyToMany(() => Progress)
-  @JoinTable()
-  progresses: Progress[];
+  // @ManyToMany(() => Progress)
+  // @JoinTable()
+  // progresses: Progress[];
 }

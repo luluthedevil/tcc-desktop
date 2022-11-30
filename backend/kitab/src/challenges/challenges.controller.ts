@@ -9,7 +9,7 @@ export class ChallengesController {
 
   @Post()
   create(@Body() challenge: CreateChallengeDto) {
-    return this.challengesService.create(challenge.name, challenge.description);
+    return this.challengesService.create(challenge.name, challenge.description, challenge.quantity);
   }
 
   @Get()
