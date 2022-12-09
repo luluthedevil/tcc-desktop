@@ -2,6 +2,7 @@ import React, {useRef} from 'react';
 import Book from '../Book';
 import './style.css';
 import { IoIosArrowDropleft, IoIosArrowDropright } from 'react-icons/io';
+import { Link } from "react-router-dom";
 
 export default function Booklist({title, livros, showModal, thumbnail}) { 
   const handleBook = (book, index) => (
@@ -27,20 +28,34 @@ export default function Booklist({title, livros, showModal, thumbnail}) {
 
   return (
     <div className="container-books">
-      <h4>{title}</h4>      
-        <div className="container-content">
-          <button className="button" onClick={handleClickLeft}>
-            <IoIosArrowDropleft size={50} color="#fff" />
-          </button>
-          <div className="books carousel" ref={carousel}>
-            {livros.map((book, index) => (
-              // console.log(book)
-              handleBook(book, index)
-            ))}
-          </div>
-          <button className="button" onClick={handleClickRight}>
-            <IoIosArrowDropright size={50} color="#fff" />
-          </button>
+      <div className="carousel-text">
+        <h4 className="book-list-title">{title}</h4>
+        <Link to={
+          title == "Livros lidos" 
+          ? "livros-lidos"
+          : "livros-a-ler"} 
+          className="see-all-btn"
+          state={{
+            title: title,
+            books: livros
+          }}
+          >
+            Ver todos
+        </Link>
+      </div>     
+      <div className="container-content">
+        <button className="button" onClick={handleClickLeft}>
+          <IoIosArrowDropleft size={50} color="#fff" />
+        </button>
+        <div className="books carousel" ref={carousel}>
+          {livros.map((book, index) => (
+            // console.log(book)
+            handleBook(book, index)
+          ))}
+        </div>
+        <button className="button" onClick={handleClickRight}>
+          <IoIosArrowDropright size={50} color="#fff" />
+        </button>
       </div>
     </div>
   );

@@ -9,6 +9,7 @@ import RewardsScreen from './screens/RewardsScreen/RewardsScreen';
 import TermsScreen from './screens/TermsScreen/TermsScreen';
 import Warn from './components/warn';
 import BookDetailsScreen from './screens/BookDetailsScreen/BookDetailsScreen';
+import BookListingScreen from './screens/BookListingScreen/BookListingScreen';
 require('dotenv').config();
 
 function App() {
@@ -26,6 +27,8 @@ function App() {
             <Route path="/rewards" element={<RewardsScreen />} />
             <Route path="/terms" element={<TermsScreen />} />
             <Route path="/book-details" element={<BookDetailsScreen />} />
+            <Route path="library/livros-lidos" element={<BookListingScreen />} />
+            <Route path="librarylivros-a-ler" element={<BookListingScreen />} />
           </Routes>
         </div>
       </div>

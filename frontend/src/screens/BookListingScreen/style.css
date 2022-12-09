@@ -1,0 +1,13 @@
+.go-back-button {
+    font-size: 1.3rem;
+    cursor: pointer;
+    position: absolute;
+    left: 0;
+    padding-left: 50px;
+}
+
+.title {
+    text-align: center;
+    margin-left: 40%;
+    margin-right: 40%;
+}

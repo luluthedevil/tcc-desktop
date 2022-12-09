@@ -3,7 +3,7 @@ import './style.css';
 import Trophy from '../Trophy';
 import data from '../../data/Challenges';
 
-export default function ListTrophy() {
+export default function ListTrophy({ list }) {
   return (
     <div className="container-trophies">
         {data.map((challenge) => (

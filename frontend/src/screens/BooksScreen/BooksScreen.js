@@ -4,9 +4,7 @@ import Book from '../../components/Book';
 import { BsSearch } from 'react-icons/bs';
 import semCapa from '../../imgs/capa_para_sem_capa.png';
 import axios from 'axios';
-import dotenv from 'dotenv';
 import Modal from '../../components/Book/Modal';
-dotenv.config();
 
 export default function BooksScreen() {
   const [search, setSearch] = useState("");

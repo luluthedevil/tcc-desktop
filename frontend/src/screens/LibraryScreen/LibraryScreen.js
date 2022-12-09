@@ -30,7 +30,7 @@ export default function LibraryScreen() {
     <div className="container-library">
       <h2 className="title">Biblioteca</h2>
       <Booklist 
-        title={"Livros salvos"}
+        title={"Livros lidos"}
         livros={data}
         showModal={displayModal}
         thumbnail={bookImg}
