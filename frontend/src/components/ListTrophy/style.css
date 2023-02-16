@@ -1,11 +1,18 @@
 .container-trophies {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     align-items: center;
     justify-content: center;
 }
 
+.individual-trophie {
+    margin-left: 15px;
+    padding-bottom: 20px;
+}
+
 .trophies {
     display: flex;
+    align-items: center;
+    justify-content: center;
     flex-direction: row;
 }

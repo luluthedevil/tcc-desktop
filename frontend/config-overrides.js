@@ -1,7 +1,6 @@
 const webpack = require('webpack');
 
 module.exports = function override (config, env) {
-    console.log('override')
     // config.resolve.fallback = {
     //     // existing configs...
     //     url: require.resolve('url'),

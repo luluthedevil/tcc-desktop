@@ -25,13 +25,37 @@ export default function LibraryScreen() {
     setBookImg(thumbnail);
     setShowModal(!showModal);
   }
-  //add modal
+  function readBooks() {
+    let books = [];
+    data.map((book) => {
+      if(book.isRead){
+        books.push(book);
+      }
+    });
+    return books;
+  }
+
+  function notReadBooks() {
+    let books = [];
+    data.map((book) => {
+      if(!book.isRead){
+        books.push(book);
+      }
+    });
+    return books;
+  }
   return (
     <div className="container-library">
       <h2 className="title">Biblioteca</h2>
       <Booklist 
         title={"Livros lidos"}
-        livros={data}
+        livros={readBooks()}
+        showModal={displayModal}
+        thumbnail={bookImg}
+      />
+      <Booklist 
+        title={"Livros a ler"}
+        livros={notReadBooks()}
         showModal={displayModal}
         thumbnail={bookImg}
       />
@@ -40,6 +64,14 @@ export default function LibraryScreen() {
         info={bookModal} 
         onClose={() => setShowModal(!showModal)}
         thumbnail={bookImg}
+        title={bookModal.title}
+        author={bookModal.author}
+        publisher={bookModal.publisher}
+        publishedDate={bookModal.publishedDate}
+        previewLink={bookModal.previewLink}
+        description={bookModal.description}
+        isRead={bookModal.isRead}
+        isbn={bookModal.isbn13}
       />
     </div>
   );

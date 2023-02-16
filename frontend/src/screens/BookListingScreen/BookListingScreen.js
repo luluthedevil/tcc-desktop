@@ -1,11 +1,10 @@
 import React, { useState } from 'react';
-import { useLocation } from 'react-router-dom'
+import { useLocation, useNavigate } from 'react-router-dom'
 import './style.css';
 import Book from '../../components/Book';
 import semCapa from '../../imgs/capa_para_sem_capa.png';
 import Modal from '../../components/Book/Modal';
 import { AiOutlineArrowLeft } from 'react-icons/ai';
-import { useNavigate } from 'react-router-dom';
 
 export default function BookListingScreen() {
   const location = useLocation();
@@ -16,7 +15,7 @@ export default function BookListingScreen() {
   const navigate = useNavigate();
   const displayModal = (bookInfo) => {
     setBookModal(bookInfo);
-    setBookImg((bookInfo.imageLinks && bookInfo.imageLinks.smallThumbnail) ? bookInfo.imageLinks.smallThumbnail : semCapa);
+    setBookImg(bookInfo.image);
     setShowModal(!showModal);
   }
   return (
@@ -29,8 +28,10 @@ export default function BookListingScreen() {
         {
           books.map((item)=> (
             <Book key={item.id} info={item}
-            showModal={displayModal}
-            thumbnail={item.image ? item.image : semCapa}
+              showModal={displayModal}
+              thumbnail={item.image ? item.image : semCapa}
+              title={item.title}
+              author={item.author}
             />
           ))
         }
@@ -40,6 +41,14 @@ export default function BookListingScreen() {
         info={bookModal} 
         onClose={() => setShowModal(!showModal)}
         thumbnail={bookImg}
+        title={bookModal.title}
+        author={bookModal.authors}
+        publisher={bookModal.publisher}
+        publishedDate={bookModal.publishedDate}
+        previewLink={bookModal.previewLink}
+        description={bookModal.description}
+        isRead={bookModal.isRead}
+        isbn={bookModal.isbn13}
       />
     </div>
   );

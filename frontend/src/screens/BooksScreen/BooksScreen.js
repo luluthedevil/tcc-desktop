@@ -15,7 +15,6 @@ export default function BooksScreen() {
       axios.get(`http://localhost:3333/books/find?nome=${search}`)
       .then(res=>{
         setBookData(res.data.items)
-        //console.log(res.data.items)
       })
       .catch(err=>console.log(err))
     }
@@ -24,6 +23,7 @@ export default function BooksScreen() {
   const [bookImg, setBookImg] = useState("");
   const displayModal = (bookInfo) => {
     setBookModal(bookInfo);
+    console.log(bookInfo.industryIdentifiers[0].identifier)
     setBookImg((bookInfo.imageLinks && bookInfo.imageLinks.smallThumbnail) ? bookInfo.imageLinks.smallThumbnail : semCapa);
     setShowModal(!showModal);
   }
@@ -46,6 +46,8 @@ export default function BooksScreen() {
             <Book key={item.id} info={item.volumeInfo}
             showModal={displayModal}
             thumbnail={(item.volumeInfo.imageLinks && item.volumeInfo.imageLinks.smallThumbnail) ? item.volumeInfo.imageLinks.smallThumbnail : semCapa}
+            title={item.volumeInfo.title}
+            author={item.volumeInfo.authors}
             />
           ))
         }
@@ -55,6 +57,13 @@ export default function BooksScreen() {
         info={bookModal} 
         onClose={() => setShowModal(!showModal)}
         thumbnail={bookImg}
+        title={bookModal.title}
+        author={bookModal.authors}
+        publisher={bookModal.publisher}
+        publishedDate={bookModal.publishedDate}
+        previewLink={bookModal.previewLink}
+        description={bookModal.description}
+        isbn={bookModal.industryIdentifiers?.[0].identifier}
       />
     </div>
   );

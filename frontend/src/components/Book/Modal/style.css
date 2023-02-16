@@ -24,14 +24,18 @@
 
 .overlay-inner .modal-buttons {
     z-index: 999;
-    display: block;
     position: fixed;
     display: flex;
     justify-content: space-between;
     background: #00BFFF;
     width: 65vw;
-    padding: 1.5rem;
-    height: 60px;
+    padding: 0.8rem;
+    height: 65px;
+}
+
+.something {
+    display: flex;
+    flex-direction: row;
 }
 
 .overlay-inner .close-btn {
@@ -41,6 +45,8 @@
     outline: none;
     border: none;
     font-size: 20px;
+    margin-top: 0.6rem;
+    margin-right: 0.5rem;
     background-color: transparent;
     cursor: pointer;
     justify-content: flex-end;
@@ -51,11 +57,40 @@
     top: 1rem;
     left: 1rem;
     outline: none;
-    border: none;
-    font-size: 20px;
+    padding: 8px;
+    border-radius: 10px;
+    font-size: 18px;
+    margin-right: 15px;
     background-color: transparent;
     cursor: pointer;
 }
+
+.overlay-inner .want-btn {
+    border: solid 2px #fff;
+}
+
+.overlay-inner .want-btn:hover {
+    background-color: #fff;
+    color: #222;
+}
+
+.overlay-inner .read-btn {
+    border: solid 2px #E066FF;
+}
+
+.overlay-inner .read-btn:hover {
+    background-color: #E066FF;
+    color: snow;
+}
+
+.delete-btn {
+    border: solid 2px #FF4040;
+}
+
+.delete-btn:hover{
+    background-color: #FF4040;
+}
+
 
 .overlay-inner .inner-box {
     margin-top: 50px;

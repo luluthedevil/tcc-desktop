@@ -4,6 +4,7 @@
 }
 
 .container-books .carousel {
+    max-width: 75vw;
     display: flex;
     overflow-x: auto;
     scroll-behavior: smooth;

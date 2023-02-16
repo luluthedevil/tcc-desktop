@@ -28,7 +28,7 @@ function App() {
             <Route path="/terms" element={<TermsScreen />} />
             <Route path="/book-details" element={<BookDetailsScreen />} />
             <Route path="library/livros-lidos" element={<BookListingScreen />} />
-            <Route path="librarylivros-a-ler" element={<BookListingScreen />} />
+            <Route path="library/livros-a-ler" element={<BookListingScreen />} />
           </Routes>
         </div>
       </div>

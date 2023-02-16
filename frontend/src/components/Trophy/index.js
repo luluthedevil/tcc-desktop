@@ -5,12 +5,9 @@ import { FaTrophy } from 'react-icons/fa';
 export default function Trophy({info, color}) {
   return (
     <>
-        {info.map((trophy) => (
-          <div className="trophy" key={trophy.id}>
-            <p>{trophy.nome}</p>
-            < FaTrophy color={color >= trophy.quantidadeMin ? "aqua" : "crimson" } size={50} />
-          </div>
-        ))}
+      <div className="trophy">
+        < FaTrophy color={color ? "aqua" : "coral" } size={50} />
+      </div>
     </>
   );
 }

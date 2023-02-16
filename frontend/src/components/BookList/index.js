@@ -4,12 +4,14 @@ import './style.css';
 import { IoIosArrowDropleft, IoIosArrowDropright } from 'react-icons/io';
 import { Link } from "react-router-dom";
 
-export default function Booklist({title, livros, showModal, thumbnail}) { 
+export default function Booklist({title, livros, showModal}) { 
   const handleBook = (book, index) => (
     <div className="item" key={index}>
-      <Book key={book.title} info={book}
+      <Book key={book.isbn13} info={book}
       thumbnail={book.image}
       showModal={showModal}
+      title={book.title}
+      author={book.author}
       />
     </div>
   );
@@ -31,7 +33,7 @@ export default function Booklist({title, livros, showModal, thumbnail}) {
       <div className="carousel-text">
         <h4 className="book-list-title">{title}</h4>
         <Link to={
-          title == "Livros lidos" 
+          title === "Livros lidos" 
           ? "livros-lidos"
           : "livros-a-ler"} 
           className="see-all-btn"
@@ -49,8 +51,7 @@ export default function Booklist({title, livros, showModal, thumbnail}) {
         </button>
         <div className="books carousel" ref={carousel}>
           {livros.map((book, index) => (
-            // console.log(book)
-            handleBook(book, index)
+                handleBook(book, index)
           ))}
         </div>
         <button className="button" onClick={handleClickRight}>
