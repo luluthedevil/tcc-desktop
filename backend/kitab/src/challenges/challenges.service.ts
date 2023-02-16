@@ -12,7 +12,6 @@ export class ChallengesService {
 
   create(name: string, description: string, quantity: number): Promise<Challenge> {
     const newChallenge = this.challengeRepository.create({name, description, quantity});
-    console.log(newChallenge);
     return this.challengeRepository.save(newChallenge); // insert or update
   }
 

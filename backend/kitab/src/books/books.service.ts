@@ -2,6 +2,7 @@ import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 //import { CreateBookDto } from './dto/create-book.dto';
 //import { UpdateBookDto } from './dto/update-book.dto';
+import { UpdateBookModelDto } from './dto/update-book-model.dto';
 import { Repository } from 'typeorm';
 import { Book } from './entities/book.entity';
 import { BookAPI, BookAPIDocument } from './entities/book.models';
@@ -23,14 +24,25 @@ export class BooksService {
 
   //get book in mongo
   async getInMongo() {
-    return this.bookModel.find({})
-    .then((book)=> {return book})
-    .catch((err) => console.log(err))
+    return await this.bookModel.find({
+      order: {
+        dateAdded: "asc"
+      }
+    });
   }
 
   //get one book in mongo
   async getOneInMongo(id: string): Promise<BookAPI> {
     const book = await this.bookModel.findById({_id: id});
+    return book;
+  }
+
+  //get one book in mongo by isbn
+  async getOneInMongoByISBN(isbn: string) {
+    const book = await this.bookModel.find({
+      $or: [{isbn13: isbn}],
+      $and: [{isbn13: isbn}]
+    });
     return book;
   }
 
@@ -41,11 +53,12 @@ export class BooksService {
   }
 
   async getSize() {
-    return this.bookModel.count();
+    return this.bookModel.find({})
+    .then((book)=> {return book.length})
+    .catch((err) => console.log(err))
   }
 
   async findAll(limit: number, offset: number): Promise<Book[]> {
-    console.log(limit, offset)
     return this.bookRepository.find({
       take: limit,
       skip: offset
@@ -61,14 +74,11 @@ export class BooksService {
     }
   }
 
-  async update(id: number, bookName: string): Promise<Book> {
-    const book = await this.findOne(id);
-    book.bookName = bookName;
-    return this.bookRepository.save(book); //update
+  async update(id: string, bookModelData: UpdateBookModelDto): Promise<BookAPIDocument> {
+    return await this.bookModel.findByIdAndUpdate(id, bookModelData);
   }
 
-  async remove(id: number): Promise<Book> {
-    const book = await this.findOne(id);
-    return this.bookRepository.remove(book);
+  async remove(id: string): Promise<Book> {
+    return await this.bookModel.findByIdAndRemove(id);
   }
 }

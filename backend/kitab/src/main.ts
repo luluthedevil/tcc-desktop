@@ -9,7 +9,6 @@ async function bootstrap() {
   const app = await NestFactory.create(AppModule);
   const challengesService = app.get(ChallengesService);
   const challenges = await challengesService.findAll();
-  console.log(challenges);
   if(challenges.length == 0) {
     const newChallenges = [];
     let lastChallenge = 10;

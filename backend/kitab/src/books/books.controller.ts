@@ -2,6 +2,7 @@ import { Controller, Get, Post, Body, Patch, Param, Delete, Query } from '@nestj
 import { BooksService } from './books.service';
 //import { CreateBookDto } from './dto/create-book.dto';
 //import { UpdateBookDto } from './dto/update-book.dto';
+import { UpdateBookModelDto } from './dto/update-book-model.dto';
 import { HttpService } from '@nestjs/axios';
 import { map } from 'rxjs';
 import { BookAPI } from './entities/book.models';
@@ -16,6 +17,16 @@ export class BooksController {
     .get(`https://www.googleapis.com/books/v1/volumes?q=${nome}&key=${process.env.API_KEY}&maxResults=20`)
     .toPromise();
     return data;
+  }
+
+  @Get('count')
+  async getMongoSize() {
+    return this.booksService.getSize();
+  }
+
+  @Get('isbn/:isbn13')
+  async getOneInMongoISBN(@Param('isbn13') isbn: string) {
+    return await this.booksService.getOneInMongoByISBN(isbn);
   }
 
   @Post()
@@ -33,12 +44,6 @@ export class BooksController {
     return this.booksService.getOneInMongo(id);
   }
 
-  @Get('count')
-  async getMongoSize() {
-    return this.booksService.getSize();
-  }
- 
-
   @Delete(':id')
   async deleteOneInMongo(@Param('id') id: string) {
     return this.booksService.deleteOneInMongo(id);
@@ -49,10 +54,10 @@ export class BooksController {
   //   return this.booksService.findOne(+id);
   // }
 
-  // @Patch(':id')
-  // update(@Param('id') id: string, @Body() bookName: string) {
-  //   return this.booksService.update(+id, bookName);
-  // }
+  @Patch(':id')
+  update(@Param('id') id: string, @Body() isRead: UpdateBookModelDto) {
+    return this.booksService.update(id, isRead);
+  }
 
   // @Delete(':id')
   // remove(@Param('id') id: string) {

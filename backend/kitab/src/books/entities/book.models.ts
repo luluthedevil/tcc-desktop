@@ -26,6 +26,12 @@ export class BookAPI {
     @Prop()
     description: string;
 
+    @Prop()
+    isRead: boolean;
+
+    @Prop()
+    isbn13: string;
+
     @Prop({ default: Date.now })
     dateAdded: Date;
 }
