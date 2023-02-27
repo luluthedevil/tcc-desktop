@@ -53,7 +53,10 @@ export class BooksService {
   }
 
   async getSize() {
-    return this.bookModel.find({})
+    return await this.bookModel.find({
+      $or: [{isRead: true}],
+      $and: [{isRead: true}]
+    })
     .then((book)=> {return book.length})
     .catch((err) => console.log(err))
   }

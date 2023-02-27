@@ -49,18 +49,8 @@ export class BooksController {
     return this.booksService.deleteOneInMongo(id);
   }
 
-  // @Get(':id')
-  // findOne(@Param('id') id: string) {
-  //   return this.booksService.findOne(+id);
-  // }
-
   @Patch(':id')
   update(@Param('id') id: string, @Body() isRead: UpdateBookModelDto) {
     return this.booksService.update(id, isRead);
   }
-
-  // @Delete(':id')
-  // remove(@Param('id') id: string) {
-  //   return this.booksService.remove(+id);
-  // }
 }
