@@ -41,7 +41,7 @@ export default function Modal ({
             "description": description,
             "isRead": true,
             "isbn13": isbn
-        })
+        });
     }
     async function handleIsNotReadBook() {
         axios.post(`${baseURL}books`, {
@@ -54,7 +54,7 @@ export default function Modal ({
             "description": description,
             "isRead": false,
             "isbn13": isbn
-        })
+        });
     }
     async function handleDeleteBook() {
         axios.get(`${baseURL}books/isbn/${isbn}`)
@@ -75,7 +75,6 @@ export default function Modal ({
             }
         })
         .catch((err) => console.log(err));
-        
     }
     async function handleMoveToNotReadBook() {
         axios.get(`${baseURL}books/isbn/${isbn}`)
@@ -87,7 +86,6 @@ export default function Modal ({
             }
         })
         .catch((err) => console.log(err));
-        
     }
     if(!showModal) {
         return null;
