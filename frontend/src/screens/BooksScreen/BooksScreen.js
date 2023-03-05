@@ -28,7 +28,7 @@ export default function BooksScreen() {
     setShowModal(!showModal);
   }
   return (
-    <div className="container-books">
+    <div className="container-search">
       <h2 className="title">Pesquisar</h2>
       <div className="book-input">
         <input

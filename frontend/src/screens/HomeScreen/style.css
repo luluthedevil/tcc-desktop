@@ -1,3 +1,20 @@
 .container-home {
-    padding: 0 80px 0 80px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.75);
+    color: snow;
+    padding: 20px 100px 20px 100px;
+    margin: 0 100px 0 100px;
+    border-radius: 5px;
+}
+
+.title-home {
+    font-size: 25px;
+}
+
+.loren-txt {
+    margin-top: 10px;
+    font-size: 16px;
 }
