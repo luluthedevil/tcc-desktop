@@ -1,10 +1,13 @@
 .container-rewards {
-    margin-left: 50px;
-    margin-right: 50px;
+    margin: 0 100px 0 100px;
+    padding: 20px 100px 20px 100px;
+    background-color: rgba(0, 0, 0, 0.75);
+    color: snow;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
-    flex-direction: column;
+    border-radius: 5px;
 }
 
 .title {
@@ -12,4 +15,8 @@
     border-bottom: 1px solid aqua;
     padding: 5px;
     margin-bottom: 20px;
+}
+
+.last-time-added {
+    font-size: 18px;
 }
