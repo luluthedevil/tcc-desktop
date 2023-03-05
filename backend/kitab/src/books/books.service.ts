@@ -57,7 +57,7 @@ export class BooksService {
       $or: [{isRead: true}],
       $and: [{isRead: true}]
     })
-    .then((book)=> {return book.length})
+    .then((books)=> {return books})
     .catch((err) => console.log(err))
   }
 
