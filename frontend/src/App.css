@@ -12,20 +12,22 @@ html{
 body {
   background-image: url("imgs/bookshelfBG.jpg");
   width: 100%;
-  min-height: 100vh;
+  min-height: 100%;
 }
 
 .container{
-  margin-top: 25px;
+  padding-top: 15px;
   margin-left: 100px;
   margin-right: 100px;
   background-color: rgba(0, 0, 0, 0.66);
   color: #fff;
-  border-radius: 20px;
+  border-radius: 10px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  bottom: -50;
+  margin-top: 50px;
 }
 @media (max-width: 1000px) {
   .container{
