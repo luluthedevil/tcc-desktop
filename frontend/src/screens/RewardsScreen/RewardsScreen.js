@@ -30,7 +30,7 @@ export default function RewardsScreen() {
       />
       <p className="last-time-added">
         Último livro adicionado em:
-        {` ${readLength[readLength.length-1].dateAdded.slice(8,10)}/${readLength[readLength.length-1].dateAdded.slice(5,7)}/${readLength[readLength.length-1].dateAdded.slice(0,4)}`}
+        {` ${readLength[readLength.length-1]?.dateAdded?.slice(8,10)}/${readLength[readLength.length-1]?.dateAdded?.slice(5,7)}/${readLength[readLength.length-1]?.dateAdded?.slice(0,4)}`}
       </p>
     </div>
   );
