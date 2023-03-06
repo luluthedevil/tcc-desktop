@@ -5,6 +5,7 @@ import axios from 'axios';
 
 export default function RewardsScreen() {
   const [data, setData] = useState([]);
+  const [unreadData, setUnreadData] = useState([]);
   const [readLength, setReadLength] = useState([]);
   const baseURL = 'http://localhost:3333/';
 
@@ -17,6 +18,11 @@ export default function RewardsScreen() {
     axios.get(`${baseURL}books/count`)
     .then(response => {
       setReadLength(response.data);
+    })
+    .catch((err) => console.log(err));
+    axios.get(`${baseURL}books/count-unread`)
+    .then(response => {
+      setUnreadData(response.data);
     })
     .catch((err) => console.log(err));
   }, []); 
@@ -32,6 +38,22 @@ export default function RewardsScreen() {
         Último livro adicionado em:
         {` ${readLength[readLength.length-1]?.dateAdded?.slice(8,10)}/${readLength[readLength.length-1]?.dateAdded?.slice(5,7)}/${readLength[readLength.length-1]?.dateAdded?.slice(0,4)}`}
       </p>
+      <ListTrophy
+        list={data}
+        test={"unread"}
+        length={unreadData.length}
+        lastbook={unreadData[unreadData.length-1]}
+      />
+      <p className="last-time-added">
+        Último livro adicionado em:
+        {` ${unreadData[unreadData.length-1]?.dateAdded?.slice(8,10)}/${unreadData[unreadData.length-1]?.dateAdded?.slice(5,7)}/${unreadData[unreadData.length-1]?.dateAdded?.slice(0,4)}`}
+      </p>
+      <ListTrophy
+        list={data}
+        test={"clean"}
+        length={unreadData.length}
+        lastbook={unreadData[unreadData.length-1]}
+      />
     </div>
   );
 }
