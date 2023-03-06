@@ -24,6 +24,11 @@ export class BooksController {
     return this.booksService.getSize();
   }
 
+  @Get('count-unread')
+  async getMongoSizeUnread() {
+    return this.booksService.getSizeUnread();
+  }
+
   @Get('isbn/:isbn13')
   async getOneInMongoISBN(@Param('isbn13') isbn: string) {
     return await this.booksService.getOneInMongoByISBN(isbn);

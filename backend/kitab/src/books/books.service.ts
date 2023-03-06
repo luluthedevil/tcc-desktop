@@ -61,6 +61,15 @@ export class BooksService {
     .catch((err) => console.log(err))
   }
 
+  async getSizeUnread() {
+    return await this.bookModel.find({
+      $or: [{isRead: false}],
+      $and: [{isRead: false}]
+    })
+    .then((books)=> {return books})
+    .catch((err) => console.log(err))
+  }
+
   async findAll(limit: number, offset: number): Promise<Book[]> {
     return this.bookRepository.find({
       take: limit,
